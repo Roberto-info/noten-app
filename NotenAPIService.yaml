@@ -1,0 +1,108 @@
+openapi: 3.1.0
+info:
+  title: NotenAPIService
+  version: '1.0'
+  description: NotenAPI
+  summary: Sendet Noten zurück
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/person/note/{PersonId}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: Sendet die Note der Person
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: number
+              examples:
+                Note:
+                  value: 5
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: string
+              examples:
+                Not Found:
+                  value: Not Found
+      operationId: get-person-note
+      description: Holt die Noten der Person
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+            examples:
+              id:
+                value: '12'
+    parameters:
+      - schema:
+          type: string
+        name: PersonId
+        in: path
+        required: true
+        description: Id der Person
+components:
+  schemas:
+    Person:
+      title: Person
+      type: object
+      examples:
+        - id: '123'
+          vorname: Max
+          name: Mustermann
+          fach:
+            id: '12'
+            name: Deutsch
+            noten: 5
+      properties:
+        id:
+          type: string
+        vorname:
+          type: string
+        name:
+          type: string
+        fach:
+          $ref: '#/components/schemas/Fach'
+    Fach:
+      title: Fach
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        noten:
+          type: number
+      required:
+        - id
+      examples:
+        - id: '12'
+          name: Deutsch
+          noten: 5
+  responses:
+    Note:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            type: number
+          examples:
+            Note:
+              value: 5
+  requestBodies:
+    RequestPersonFach:
+      content:
+        application/json:
+          schema:
+            type: string
+          examples:
+            id:
+              value: '123'
+  parameters: {}

@@ -1,0 +1,26 @@
+{
+  "name": "noten-app",
+  "version": "1.0.0",
+  "description": "Das ist eine App in der man Noten eingeben und auslesen kann.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test-notenapp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roberto-info/noten-app.git"
+  },
+  "keywords": [
+    "Noten"
+  ],
+  "author": "Roberto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roberto-info/noten-app/issues"
+  },
+  "homepage": "https://github.com/Roberto-info/noten-app#readme",
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.2",
+    "express": "^4.18.2"
+  }
+}

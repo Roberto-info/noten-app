@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  description: NotenAPI
+  title: NotenAPIService
+  version: "1.0"
+servers:
+- url: http://localhost:3000
+paths:
+  /person/note/{PersonId}:
+    get:
+      description: Holt die Noten der Person
+      operationId: get-person-note
+      parameters:
+      - description: Id der Person
+        explode: false
+        in: path
+        name: PersonId
+        required: true
+        schema: {}
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              id:
+                value: "12"
+            schema: {}
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Note:
+                  value: 5
+              schema: {}
+          description: Sendet die Note der Person
+        "404":
+          content:
+            application/json:
+              examples:
+                Not Found:
+                  value: Not Found
+              schema: {}
+          description: Not Found
+      summary: Your GET endpoint
+      tags: []
+      x-eov-operation-handler: controllers/DefaultController
+    parameters:
+    - description: Id der Person
+      explode: false
+      in: path
+      name: PersonId
+      required: true
+      schema: {}
+      style: simple
+components:
+  parameters: {}
+  requestBodies:
+    RequestPersonFach:
+      content:
+        application/json:
+          examples:
+            id:
+              value: "123"
+          schema: {}
+  responses:
+    Note:
+      content:
+        application/json:
+          examples:
+            Note:
+              value: 5
+          schema: {}
+      description: Example response
+  schemas:
+    Person:
+      properties:
+        id: {}
+        vorname: {}
+        name: {}
+        fach:
+          $ref: '#/components/schemas/Fach'
+      title: Person
+    Fach:
+      properties:
+        id: {}
+        name: {}
+        noten: {}
+      required:
+      - id
+      title: Fach
